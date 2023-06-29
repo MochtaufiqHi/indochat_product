@@ -3,6 +3,7 @@ package main
 import (
 	"diskon/database"
 	"diskon/pkg/mysql"
+	"diskon/routes"
 	"fmt"
 
 	"github.com/labstack/echo/v4"
@@ -32,6 +33,7 @@ func main() {
 
 	mysql.ConDB()
 	database.MigrateDB()
+	routes.RouteInit(e.Group("/api/v1"))
 
-	e.Logger.Fatal(e.Start("localhost:3300"))
+	e.Logger.Fatal(e.Start("localhost:3330"))
 }
